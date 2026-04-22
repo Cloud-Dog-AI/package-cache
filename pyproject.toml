@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cloud_dog_cache"
+version = "0.1.1"
+description = "Platform caching package for LLM and tool call results"
+license = "Apache-2.0"
+authors = [{name = "Cloud-Dog, Viewdeck Engineering Limited"}]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+redis = ["redis>=5.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-p no:cloud_dog_config"
