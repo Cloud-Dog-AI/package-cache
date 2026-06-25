@@ -1,0 +1,2 @@
+# Minimal config for unit tests — no external services required
+CLOUD_DOG__ENV=test

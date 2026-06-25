@@ -52,7 +52,7 @@ class AccessUrlConfig:
 
     Attributes:
         base_url: Public base URL where the cache router is mounted, e.g.
-            ``https://service.example.com``. The access path
+            ``https://notificationagent0.cloud-dog.net``. The access path
             ``/cache/access/{key}`` is appended.
         signing_secret: Secret used for HMAC-SHA256 signing. When empty,
             ``signed=True`` calls raise ``ValueError`` — services MUST
