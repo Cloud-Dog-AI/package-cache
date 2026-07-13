@@ -1,6 +1,0 @@
-schema-version: 1.0
-project: platform-cache
-canon-set: PACKAGE
-canon-template-baseline: 1.0
-conditional-docs: []
-additional-docs: []

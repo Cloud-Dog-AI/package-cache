@@ -52,7 +52,7 @@ class AccessUrlConfig:
 
     Attributes:
         base_url: Public base URL where the cache router is mounted, e.g.
-            ``https://notificationagent0.cloud-dog.net``. The access path
+            ``https://cache.example.com``. The access path
             ``/cache/access/{key}`` is appended.
         signing_secret: Secret used for HMAC-SHA256 signing. When empty,
             ``signed=True`` calls raise ``ValueError`` — services MUST
@@ -99,6 +99,22 @@ class AccessUrlEntry:
             "cache_ttl_seconds": self.cache_ttl,
             "metadata": dict(self.metadata),
         }
+
+    def to_asset_reference(self) -> dict[str, Any]:
+        """Return a URL reference envelope without cached bytes."""
+        result: dict[str, Any] = {
+            "url": self.url,
+            "cache_key": self.key,
+            "source": "cloud_dog_cache",
+            "signed": self.signed,
+        }
+        if self.url_expires_at:
+            result["expires_at"] = self.url_expires_at.isoformat()
+        if self.cache_ttl is not None:
+            result["cache_ttl_seconds"] = self.cache_ttl
+        if self.metadata:
+            result["metadata"] = dict(self.metadata)
+        return result
 
 
 # ---------------------------------------------------------------------------
